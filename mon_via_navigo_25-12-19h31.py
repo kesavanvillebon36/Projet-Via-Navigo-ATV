@@ -1,7 +1,7 @@
 #################################################
 #Institut Villebon UE 5.I4
-#Projets Via Navigo
-#Auteurs: Mansour Abdoulakime, Julie Vong et Kesavan Thirusittampalam
+#Projet Via Navigo
+#Auteurs: Mansour Abdoulakime, Kesavan Thirusittampalam et Julie Vong 
 #Date de creation: 25/12/15
 #Date de derniere modification: 25/12/15 a 19h31
 #################################################
