@@ -10,7 +10,10 @@
 class Station:
     """
     Class which will represent every station, contains differents methods to
-
+    Attributes:
+    name: string
+    position: couple of float for the coordinates on the map
+    in_line: belonging to a line
 
     """
 
@@ -21,20 +24,24 @@ class Station:
 
 
     def __eq__(self, station):
+        """Decides if 2 stations are equal"""
         bool = 0
         if self.name == station.name:
             return True
 
 
     def __lt__(self, station):
+        """Decide which station is the smallest in terms of alphabetic order of the name, then of the line if it is the same station"""
         pass
 
 
     def __hash__(self):
+        """Return the station and its line"""
         return hash(self.name + self.in_line)
 
 
     def __str__(self):
+        """Represent the station"""
         txt = ""
         return txt
 
