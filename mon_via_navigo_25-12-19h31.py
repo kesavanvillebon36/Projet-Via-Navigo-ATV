@@ -32,7 +32,10 @@ class Station:
 
     def __lt__(self, station):
         """Decide which station is the smallest in terms of alphabetic order of the name, then of the line if it is the same station"""
-        pass
+        if self < station:
+            return self
+        else:
+            return station
 
 
     def __hash__(self):
@@ -42,9 +45,9 @@ class Station:
 
     def __str__(self):
         """Represent the station"""
-        txt = ""
+        txt = __hash__(self)
+        txt+= 'Coordinates'.join(self.position)
         return txt
-
 
 
 
@@ -59,6 +62,11 @@ class Line:
 
 
 class PublicTransportationNetwork:
+    """Represents a line of public transport. A line is oriented
+    Attributes:
+        stations: list of stations of a line
+        node: type of transport : bus, umetro, RER, velib
+        name : string, name of the line"""
     def __init__(self):
         self.name = ""
         self.scale = ""
