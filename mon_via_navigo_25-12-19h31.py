@@ -5,7 +5,7 @@
 #Date de creation: 25/12/15
 #Date de derniere modification: 25/12/15 a 19h31
 #################################################
-
+import csv
 
 class Station:
     """
@@ -46,19 +46,29 @@ class Station:
     def __str__(self):
         """Represent the station"""
         txt = __hash__(self)
-        txt+= 'Coordinates'.join(self.position)
+        txt+= 'Coordinates:'.join(self.position)
         return txt
 
 
 
 class Line:
+    """Creates and represents a line of transportation
+    Attribute:
+        station: list of the stations which compose the line
+        mode: string (RER, metro, bus or velib)
+        name: string"""
     def __init__(self):
         self.station = []
         self.mode = ""
         self.name = ""
+        """Change the attribute in_line of each station of the line"""
+        for station in self.station:
+            station.in_line = self
 
     def __repr__(self):
-        return str
+        txt = "Line",self,":"
+        txt+= ','.join(station for station in self.station) 
+        return txt
 
 
 class PublicTransportationNetwork:
@@ -67,15 +77,28 @@ class PublicTransportationNetwork:
         stations: list of stations of a line
         node: type of transport : bus, umetro, RER, velib
         name : string, name of the line"""
+        
     def __init__(self):
         self.name = ""
         self.scale = ""
         self.lines = []
 
+    def add_a_line(self, line):
+        """Add a line the the attributes lines"""
+        self.lines.append(line)
+        
     def save(self, file_name):
-        pass
+        network = open("network.csv", "wb")
+        file_write = csv.writer(network)
+        file_write.writerow(["Line","Station","Coordinates"])
+        for line in self.lines:
+            for station in line.station:
+                file_write.writerow([line, station, station.position])
+        file_write.close()
+        
 
     def load_(self, file_name):
+        file_read = csv.reader(file_name)
         pass
 
 
