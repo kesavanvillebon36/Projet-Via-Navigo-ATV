@@ -111,20 +111,21 @@ class PublicTransportationNetwork:
         return txt
         
     class MyDialect(csv.Dialect):
-    # Field separator
-    delimiter = ":"
-    # ''chain'' separator
-    quotechar = None
-    # ''chaînes'' separator management
-    escapechar = None
-    doublequote = None
-    # End of line
-    lineterminator = "\r\n"
-    # Systematic automatic addition of chain separator (for ''writer'')
-    quoting = csv.QUOTE_NONE
-    # Not ignore spaces between chaine delimitator
-    # and the text
-    skipinitialspace = False
+        """Define a dialect with ":" as separator instead of default "," """
+        # Field separator
+        delimiter = ":"
+        # ''chain'' separator
+        quotechar = None
+        # ''chaînes'' separator management
+        escapechar = None
+        doublequote = None
+        # End of line
+        lineterminator = "\r\n"
+        # Systematic automatic addition of chain separator (for ''writer'')
+        quoting = csv.QUOTE_NONE
+        # Not ignore spaces between chaine delimitator
+        # and the text
+        skipinitialspace = False
 
 
 
