@@ -89,7 +89,7 @@ class PublicTransportationNetwork:
         
     def save(self, file_name):
         network = open("network.csv", "wb")
-        file_write = csv.writer(network)
+        file_write = csv.writer(network, MyDialect())
         file_write.writerow(["Line","Station","Coordinates"])
         for line in self.lines:
             for station in line.station:
@@ -110,20 +110,20 @@ class PublicTransportationNetwork:
         txt = ""
         return txt
         
-    class PasswdDialect(csv.Dialect):
-    # Séparateur de champ
+    class MyDialect(csv.Dialect):
+    # Field separator
     delimiter = ":"
-    # Séparateur de ''chaîne''
+    # ''chain'' separator
     quotechar = None
-    # Gestion du séparateur dans les ''chaînes''
+    # ''chaînes'' separator management
     escapechar = None
     doublequote = None
-    # Fin de ligne
+    # End of line
     lineterminator = "\r\n"
-    # Ajout automatique du séparateur de chaîne (pour ''writer'')
+    # Systematic automatic addition of chain separator (for ''writer'')
     quoting = csv.QUOTE_NONE
-    # Ne pas ignorer les espaces entre le délimiteur de chaîne
-    # et le texte
+    # Not ignore spaces between chaine delimitator
+    # and the text
     skipinitialspace = False
 
 
