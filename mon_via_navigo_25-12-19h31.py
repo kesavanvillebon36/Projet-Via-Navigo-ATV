@@ -17,25 +17,25 @@ class Station:
 
     """
 
-    def __init__(self,line = ""):
-        self.name = ""
-        self.position = (float, float)
+    def __init__(self, name, x, y, line = ""):
+        self.name = name
+        self.position = (x, y)
         self.in_line = line
 
 
     def __eq__(self, station):
         """Decides if 2 stations are equal"""
-        bool = 0
-        if self.name == station.name:
+        if self.name == station.name: #Test de la ligne à faire et de la position
             return True
         else:
             return False
 
 
     def __lt__(self, station):
-        """Decide which station is the smallest in terms of alphabetic order of the name, then of the line if it is the same station"""
+        """Decide which station is the smallest in terms of alphabetic 
+        order of the name, then of the line if it is the same station"""
         if self.name < station.name:
-            return self.name #? .name?
+            return self.name #? .name? Bool
         elif self.name > station.name:
             return station.name #? .name?
         else:
@@ -48,7 +48,7 @@ class Station:
 
 
     def __hash__(self):
-        """Return the station and its line"""
+        """Computes hash value of a string"""
         return hash(self.name + self.in_line)
 
 
@@ -66,13 +66,13 @@ class Line:
         station: list of the stations which compose the line
         mode: string (RER, metro, bus or velib)
         name: string"""
-    def __init__(self):
-        self.stations = []
-        self.mode = ""
-        self.name = ""
+    def __init__(self, stations, mode, name):
+        self.stations = stations
+        self.mode = mode
+        self.name = name
         """Change the attribute in_line of each station of the line"""
         for station in self.stations:
-            station.in_line = self
+            station.in_line = self.name
 
     def __repr__(self): #suffisant?
         txt = "Line",self,":"
@@ -97,7 +97,8 @@ class PublicTransportationNetwork:
         self.lines.append(line)
         
     def save(self, file_name):
-        network = open("network.csv", "wb")
+        network = open("network.csv", "w")
+        network.write("toto:10:10")
         file_write = csv.writer(network, MyDialect())
         file_write.writerow(["Line","Station","Coordinates"])
         for line in self.lines:
@@ -107,7 +108,7 @@ class PublicTransportationNetwork:
         
 
     def load_(self, file_name):
-        file_read = open(file_name, "rb")
+        file_read = open(file_name, "r")
         reader = csv.reader(file_name)
         #for row in reader:
         #Stocker les lignes dans qch mais je ne sais pas quoi
