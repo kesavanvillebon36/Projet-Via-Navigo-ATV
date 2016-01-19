@@ -28,14 +28,23 @@ class Station:
         bool = 0
         if self.name == station.name:
             return True
+        else:
+            return False
 
 
     def __lt__(self, station):
         """Decide which station is the smallest in terms of alphabetic order of the name, then of the line if it is the same station"""
-        if self < station:
-            return self
+        if self.name < station.name:
+            return self.name #? .name?
+        elif self.name > station.name:
+            return station.name #? .name?
         else:
-            return station
+            if self.in_line > station.in_line:
+                return station
+            elif self.in_line < station.in_line:
+                return self #? .name?
+            else:
+                return self #? .name?
 
 
     def __hash__(self):
@@ -58,16 +67,16 @@ class Line:
         mode: string (RER, metro, bus or velib)
         name: string"""
     def __init__(self):
-        self.station = []
+        self.stations = []
         self.mode = ""
         self.name = ""
         """Change the attribute in_line of each station of the line"""
-        for station in self.station:
+        for station in self.stations:
             station.in_line = self
 
-    def __repr__(self):
+    def __repr__(self): #suffisant?
         txt = "Line",self,":"
-        txt+= ','.join(station for station in self.station) 
+        txt+= ','.join(station for station in self.stations) 
         return txt
 
 
