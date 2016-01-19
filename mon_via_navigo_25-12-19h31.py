@@ -89,7 +89,7 @@ class PublicTransportationNetwork:
         
     def __init__(self):
         self.name = ""
-        self.scale = ""
+        self.scale = float
         self.lines = []
 
     def add_a_line(self, line):
