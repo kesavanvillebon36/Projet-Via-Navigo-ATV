@@ -67,7 +67,7 @@ class Line:
         mode: string (RER, metro, bus or velib)
         name: string"""
     def __init__(self, stations, mode, name):
-        self.stations = stations
+        self.stations = self.stations.append(stations) # a été modifie: avant self.stations = stations)
         self.mode = mode
         self.name = name
         """Change the attribute in_line of each station of the line"""
@@ -98,20 +98,17 @@ class PublicTransportationNetwork:
         
     def save(self, file_name):
         network = open("network.csv", "w")
-        network.write("toto:10:10")
-        file_write = csv.writer(network, MyDialect())
-        file_write.writerow(["Line","Station","Coordinates"])
-        for line in self.lines:
-            for station in line.station:
-                file_write.writerow([line, station, station.position])
+        for 
+        network.write("toto:10:10") #type/ligne/station/position
+        #ligne: line in self.lines
+        #station
+
         file_write.close()
         
 
     def load_(self, file_name):
-        file_read = open(file_name, "r")
-        reader = csv.reader(file_name)
-        #for row in reader:
-        #Stocker les lignes dans qch mais je ne sais pas quoi
+        network = open(file_name, "r")
+
         file.close()
 
 
