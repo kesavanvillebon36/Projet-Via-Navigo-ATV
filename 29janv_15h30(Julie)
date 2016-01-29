@@ -91,9 +91,9 @@ class PublicTransportationNetwork:
         node: type of transport : bus, umetro, RER, velib
         name : string, name of the line"""
 
-    def __init__(self):
-        self.name = ""
-        self.scale = float
+    def __init__(self, name, scale):
+        self.name = name
+        self.scale = scale
         self.lines = []
 
     def add_a_line(self, line):
@@ -103,9 +103,7 @@ class PublicTransportationNetwork:
     def save(self, file_name):
         network = open("network.csv", "w")
 
-        network.write("toto:10:10") #type/ligne/station/position
-        #ligne: line in self.lines
-        #station
+        network.write("self.mode:self.line:sel.name:self.position") #mode:line:station name:position x:position y
 
         file_write.close()
 
